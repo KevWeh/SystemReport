@@ -19,7 +19,7 @@ divider() {
 echo " ---------------------------------------" >> $file
 }
 
-# Datum + Uhrzeit abrufen:
+# VARIABLE -> Datum + Uhrzeit abrufen:
 DATE=$(date +%d.%m.%Y)
 TIME=$(date +%H:%M)
 
@@ -66,17 +66,17 @@ spacer
 
 # Überwachung Logfiles (LP = Log Path / LN = Log Name / LN?S = Log Name Short / LC = Log Count):
 LP="/var/log/asc"
-LN1="ascserver_capsit.log"
+LN1="ascserver_capsit*"
 LN2="ascserver_pl6565*"
 LN1S="capsit.log"
 LN2S="pl6565"
-LC1=$(find $LP -name "${LN1}*" | wc -l)
+LC1=$(find $LP -name "$LN1" | wc -l)
 LC2=$(find $LP -name "$LN2" | wc -l)
 
 echo "               LOGFILES:" >> $file
 empty
 echo " $LN1S......................$LC1 Files" >> $file
-ls -ahlS ${LP}/${LN1}* | head -3 | awk '{print "  - " $5 " | " $6 " " $7 " | " substr($9, index($9, "capsit.log"))}' >> $file
+ls -ahlS ${LP}/$LN1 | head -3 | awk '{print "  - " $5 " | " $6 " " $7 " | " substr($9, index($9, "capsit.log"))}' >> $file
 echo "    ..." >> $file
 divider
 echo " $LN2S..........................$LC2 Files" >> $file
@@ -84,8 +84,6 @@ ls -ahlS ${LP}/$LN2 | head -3 | awk '{print "  - " $5 " | " $6 " " $7 " | " subs
 echo "    ..." >> $file
 
 spacer
-
-
 
 # File nach Durchführung Script anzeigen:
 cat $file
