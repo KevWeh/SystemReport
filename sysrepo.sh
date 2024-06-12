@@ -24,8 +24,7 @@ DATE=$(date +%d.%m.%Y)
 TIME=$(date +%H:%M)
 
 # Dateipfad in einer Variable speichern:
-#	file=/usr/local/bin/systemreport/systemreport_$DATE.log
-file=/tmp/systemreport/systemreport_$DATE.log
+file=/tmp/systemreport_$DATE.log
 
 # Datei erstellen oder überschreiben:
 echo " " > $file
