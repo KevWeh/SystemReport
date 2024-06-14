@@ -1,14 +1,22 @@
 # System Parameter Monitoring Script
 
-This Bash script monitors and logs various system parameters. The script creates a report with the current date and time and saves it to a log file.
+This project is designed to automate the monitoring of critical system parameters on a server. It generates a detailed report that includes disk space usage, web service statuses, and log file summaries. The script is intended to assist system administrators in maintaining server health and quickly identifying potential issues.
 
 ## Contents
 
+- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Functions](#functions)
+- [Technologies](#technologies)
 - [File Output](#file-output)
 - [License](#license)
+
+## Features
+
+- **Disk Space Monitoring**: Logs the current disk space usage.
+- **Web Services Monitoring**: Checks and logs the status of specified web services.
+- **Log Files Monitoring**: Summarizes the number and size of log files in a specified directory.
+- **Email Notification**: Sends the report via email in a well-formatted HTML message.
 
 ## Installation
 
@@ -24,9 +32,32 @@ This Bash script monitors and logs various system parameters. The script creates
    chmod +x /usr/local/bin/systemreport/systemreport.sh
    ```
 
-3. **Create directory for log files:**
+3. **Create directory for log files (optional):**
    ```bash
    mkdir -p /usr/local/bin/systemreport
+   ```
+
+
+4. **Configure email settings:**
+
+   Ensure `msmtp` is installed and configure it as follows:
+   ```bash
+   sudo apt-get install msmtp
+   sudo nano /etc/msmtprc
+   ```
+   Example configuration:
+   ```bash
+   defaults
+   tls on
+   tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+   account default
+   host smtp.example.com
+   from your-email@example.com
+   auth on
+   user your-username
+   password your-password
+   logfile ~/.msmtp.log
    ```
 
 ## Usage
@@ -37,27 +68,9 @@ This Bash script monitors and logs various system parameters. The script creates
    /usr/local/bin/systemreport/systemreport.sh
    ```
 
-## Functions
-
-### Retrieve Date and Time
-
-- The script retrieves the current date and time and stores them in variables.
-
-### Disk Space Monitoring
-
-- Checks the disk space usage and logs this information.
-
-### Web Services Monitoring
-
-- Checks the status of the web services:
-  - `ascserver`
-  - `ascserver_reifenman`
-- Logs whether they are active or inactive.
-
-### Log Files Monitoring
-
-- Checks the number and size of log files in the directory `/var/log/asc`.
-- Lists the three largest files.
+## Technologies
+- **Bash:** The scripting language used to write the script.
+- **msmtp:** A lightweight SMTP client used to send email notifications.
 
 ## File Output
 
