@@ -87,3 +87,12 @@ spacer
 
 # File nach Durchführung Script anzeigen:
 cat $file
+
+# File per Mail versenden:
+SERVER="CAPTEST"
+COUNTR="CH"
+mail_content=$(cat $file)
+
+html_content="<html><body><pre style=\"font-family: 'Lucida Console', 'Consolas', 'Courier New', monospace;\">$mail_content</pre></body></html>"
+
+echo -e "Subject: $SERVER $COUNTR - $DATE | $TIME\nContent-Type: text/html\n\n$html_content" | msmtp -a default k****.w*****@*********.ch 
