@@ -1,6 +1,14 @@
 #!/bin/bash
 
-# K.W. | 06.06.24 | Script Überwachung Systemparameter
+#####################################################################################
+
+# Script Name	:	sysrepo
+# Description	:	Script to monitor critical system parameters
+# Args		:
+# Author	:	Kevin Wehrli
+# Email		:	kevin.wehrli@emilfrey.ch
+
+#####################################################################################
 
 clear
 
@@ -95,4 +103,4 @@ mail_content=$(cat $file)
 
 html_content="<html><body><pre style=\"font-family: 'Lucida Console', 'Consolas', 'Courier New', monospace;\">$mail_content</pre></body></html>"
 
-echo -e "Subject: $SERVER $COUNTR - $DATE | $TIME\nContent-Type: text/html\n\n$html_content" | msmtp -a default k****.w*****@*********.ch 
+echo -e "Subject: $SERVER $COUNTR - $DATE | $TIME\nContent-Type: text/html\n\n$html_content" | msmtp -a default kevin.wehrli@emilfrey.ch 
