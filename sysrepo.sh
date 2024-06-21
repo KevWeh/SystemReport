@@ -59,16 +59,13 @@ df -h / | awk 'NR==1 {print "       " $2 " | " $3 " | " $4 " | " $5} NR==2 {prin
 spacer
 
 # Überwachung Webservices (WS = Webservice / SS = Service Status):
-WS1="ascserver"
-WS2="ascserver_reifenman"
-SS1=$(systemctl is-active $WS1)
-SS2=$(systemctl is-active $WS2)
+webservices=("ascserver" "ascserver_autoi" "ascserver_capsit" "ascserver_reifenman" "ascwatchdog")
 
-echo "              WEBSERVICES:" >> $file
-empty
-[ "$SS1" == "active" ] && echo " $WS1............................OK" >> $file || echo " $WS1.........................!DOWN!" >> $file
+for ws in "${webservices[@]}"; do
+status=$(systemctl is-active "$ws")
+[ "$status" == "active"] && echo " $ws.............OK" >> $file || echo " $ws.............!DOWN!" >> $file
 divider
-[ "$SS2" == "active" ] && echo " $WS2..................OK" >> $file || echo " $WS2...............!DOWN!" >> $file
+done
 
 spacer
 
@@ -103,4 +100,4 @@ mail_content=$(cat $file)
 
 html_content="<html><body><pre style=\"font-family: 'Lucida Console', 'Consolas', 'Courier New', monospace;\">$mail_content</pre></body></html>"
 
-echo -e "Subject: $SERVER $COUNTR - $DATE | $TIME\nContent-Type: text/html\n\n$html_content" | msmtp -a default kevin.wehrli@emilfrey.ch 
+# echo -e "Subject: $SERVER $COUNTR - $DATE | $TIME\nContent-Type: text/html\n\n$html_content" | msmtp -a default kevin.wehrli@emilfrey.ch 
