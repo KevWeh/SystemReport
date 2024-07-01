@@ -67,8 +67,8 @@ This project is designed to automate the monitoring of critical system parameter
 
     Underneath the comment section, add the following entry:
     ```shell
-    0 6 * * * /usr/local/bin/sysrepo >/dev/null 2>&1
-    0 13 * * * /usr/local/bin/sysrepo >/dev/null 2>&1
+    0 6 * * * /usr/local/bin/systemreport.sh >/dev/null 2>&1
+    0 13 * * * /usr/local/bin/systemreport.sh >/dev/null 2>&1
     ```
 
 ## Usage
