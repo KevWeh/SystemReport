@@ -16,7 +16,7 @@ This project is designed to automate the monitoring of critical system parameter
 - **Disk Space Monitoring**: Logs the current disk space usage.
 - **Web Services Monitoring**: Checks and logs the status of specified web services.
 - **Log Files Monitoring**: Summarizes the number and size of log files in a specified directory.
-- **Email Notification**: Sends the report via email in a well-formatted HTML message.
+- **Email Notification**: Sends the report via email twice a day in a well-formatted HTML message.
 
 ## Installation
 
@@ -82,6 +82,7 @@ This project is designed to automate the monitoring of critical system parameter
 ## Technologies
 - **Bash:** The scripting language used to write the script.
 - **msmtp:** A lightweight SMTP client used to send email notifications.
+- **crontab:** A time-based job scheduler.
 
 ## File Output
 
