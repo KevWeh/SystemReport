@@ -24,19 +24,18 @@ This project is designed to automate the monitoring of critical system parameter
 
    Save the script in a directory of your choice. Example:
    ```bash
-   /usr/local/bin/systemreport/systemreport.sh
+   /usr/local/bin/systemreport.sh
    ```
 
 2. **Make the script executable:**
    ```bash
-   chmod +x /usr/local/bin/systemreport/systemreport.sh
+   chmod +x /usr/local/bin/systemreport.sh
    ```
 
 3. **Create directory for log files (optional):**
    ```bash
    mkdir -p /usr/local/bin/systemreport
    ```
-
 
 4. **Configure email settings:**
 
@@ -59,6 +58,18 @@ This project is designed to automate the monitoring of critical system parameter
    password your-password
    logfile ~/.msmtp.log
    ```
+5. **Configure crontab:**
+
+    Open the `crontab` settings in sudo mode:
+    ```shell
+    sudo crontab -e
+    ```
+
+    Underneath the comment section, add the following entry:
+    ```shell
+    0 6 * * * /usr/local/bin/sysrepo >/dev/null 2>&1
+    0 13 * * * /usr/local/bin/sysrepo >/dev/null 2>&1
+    ```
 
 ## Usage
 
