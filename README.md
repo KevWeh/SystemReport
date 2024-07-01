@@ -76,7 +76,7 @@ This project is designed to automate the monitoring of critical system parameter
 - Run the script with the following command:
 
    ```bash
-   /usr/local/bin/systemreport/systemreport.sh
+   /usr/local/bin/systemreport.sh
    ```
 
 ## Technologies
@@ -105,9 +105,9 @@ This project is designed to automate the monitoring of critical system parameter
 
               WEBSERVICES:
 
- ascserver............................OK
+ Service1 ............................OK
  ---------------------------------------
- ascserver_reifenman...............!DOWN!
+ Service2 ........................!DOWN!
 
 ########################################
 
